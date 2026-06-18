@@ -12,7 +12,10 @@ OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 TAVILY_API_KEY = os.getenv("TAVILY_API_KEY")
 
 #model setup
-llm = ChatOpenAI(model="gpt-4o-mini",temperature=0)
+llm = ChatOpenAI(
+    model="gpt-4o-mini",temperature=0,
+    api_key=os.getenv("OPENAI_API_KEY")
+)
 
 #1st agent
 def build_search_agent():
