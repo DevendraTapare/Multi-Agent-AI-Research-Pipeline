@@ -1,5 +1,5 @@
 from langchain.agents import create_agent
-from langchain_openai import ChatOpenAI
+from langchain_groq import ChatGroq
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 from tools import web_search, scrape_url
@@ -8,15 +8,14 @@ import os
 
 load_dotenv()
 
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 TAVILY_API_KEY = os.getenv("TAVILY_API_KEY")
 
 #model setup
-llm = ChatOpenAI(
-    model="gpt-4o-mini",temperature=0,
-    api_key=os.getenv("OPENAI_API_KEY")
+llm = ChatGroq(
+    model="llama-3.3-70b-versatile",
+    api_key=os.getenv("GROQ_API_KEY")
 )
-
 #1st agent
 def build_search_agent():
      return create_agent(
